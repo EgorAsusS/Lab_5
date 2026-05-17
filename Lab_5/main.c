@@ -15,6 +15,13 @@ struct point* add_befor_el(struct point** list, int x, int y, int x_add, int y_a
 struct point* add_after_el(struct point** list, int x, int y, int x_add, int y_add);
 struct point* add_to_pos(struct point** list, size_t k, int x, int y);
 struct point* find_el(struct point** list, int x, int y);
+struct point* find_k(struct point** list, size_t k);
+void del_head(struct point** list);
+void del_tail(struct point** list);
+void del_el(struct point** list, int x, int y);
+void del_at_pos(struct point** list, size_t k);
+void clear_list(struct point** list);
+void print_list(struct point** list);
 
 
 int main() {
@@ -22,15 +29,34 @@ int main() {
 	for (int i = 0; i < 10; i++) {
 		add_to_tail(&head, i, i + 1);
 	}
+	printf("First\n");
+	print_list(&head);
+	printf("\n");
+
+	//for (int i = 0; i < 10; i++) {
+	//	del_at_pos(&head, (10 - i - 1));
+	//}
+	for (int i = 0; i < 10; i++) {
+		del_el(&head, 10 - i - 1, 10 - i);
+	}
+	printf("Second\n");
+	print_list(&head);
+	printf("\n");
+
+
+	for (int i = 0; i < 10; i++) {
+		add_to_tail(&head, i, i + 1);
+	}
+	clear_list(&head);
+	printf("Third\n");
+	print_list(&head);
+	printf("\n");
 
 	add_to_pos(&head, 111, -1, -2);
 	add_to_pos(&head, 111, -3, -4);
 	// Просмотр списка
-	
-	struct point* current = head;
-	for (size_t i = 0; current; current = current->next, i++) {
-		printf("N = %zu, adress = %p, x = %d, y = %d, prev = %p, next = %p\n", i, current, current->x, current->y, current->prev, current->next);
-	}
+	printf("Fourth\n");
+	print_list(&head);
 	return 0;
 }
 
@@ -38,6 +64,15 @@ struct point* find_el(struct point** list, int x, int y) {
 	struct point* current = NULL;
 	if (list) {
 		for (current = *list; current && (current->x != x || current->y != y); current = current->next);
+	}
+	return current;
+}
+
+struct point* find_k(struct point** list, size_t k) {
+	struct point* current = NULL;
+	if (list) {
+		current = *list;
+		for (size_t i = 0; current && i < k; current = current->next, i++);
 	}
 	return current;
 }
@@ -196,4 +231,88 @@ struct point* add_to_pos(struct point** list, size_t k, int x, int y) {
 		return PtrIx;
 	}
 	return NULL;
+}
+
+void del_head(struct point** list) {
+	if (list && *list) {
+		struct point* PtrIx = *list;
+		*list = (*list)->next;
+		free(PtrIx);
+		PtrIx = NULL;
+	}
+}
+
+void del_tail(struct point** list) {
+	if (list && *list) {
+		struct point* current = *list;
+		for (current = *list; current->next; current = current->next);
+		if (current->prev) {
+			current->prev->next = NULL;
+		}
+		else {
+			*list = (*list)->next;
+		}
+		free(current);
+		current = NULL;
+	}
+}
+
+void del_el(struct point** list, int x, int y) {
+	if (list && *list) {
+		struct point* current = *list;
+		for (current = *list; current && (current->x != x || current->y != y); current = current->next);
+		if (current) {
+			if (current == *list) {
+				*list = (*list)->next;
+			}
+			else {
+				if (current->prev) {
+					current->prev->next = current->next;
+				}
+				if (current->next) {
+					current->next->prev = current->prev;
+				}
+			}
+			free(current);
+			current = NULL;
+		}
+	}
+}
+
+void del_at_pos(struct point** list, size_t k) {
+	if (list && *list) {
+		struct point* current = *list;
+		if (k) {
+			for (size_t i = 0; current && i < k; current = current->next, i++);
+			if (current) {
+				if (current->prev) {
+					current->prev->next = current->next;
+				}
+				if (current->next) {
+					current->next->prev = current->prev;
+				}
+				
+			}
+		}
+		else {
+			*list = (*list)->next;
+		}
+		free(current);
+		current = NULL;
+	}
+}
+
+void clear_list(struct point** list) {
+	while (*list) {
+		del_head(list);
+	}
+}
+
+void print_list(struct point** list) {
+	if (list && *list) {
+		struct point* current = *list;
+		for (size_t i = 0; current; current = current->next, i++) {
+			printf("N = %2zu, x = %2d, y = %2d   ||   adress = %p, prev = %p, next = %p\n", i, current->x, current->y, current, current->prev, current->next);
+		}
+	}
 }
