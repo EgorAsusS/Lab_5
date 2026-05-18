@@ -20,7 +20,7 @@ void del_tail(struct point** list);
 void del_el(struct point** list, int x, int y);
 void del_at_pos(struct point** list, size_t k);
 void clear_list(struct point** list);
-void print_list(struct point** list);
+void print_list(struct point* list);
 
 
 int main() {
@@ -33,18 +33,18 @@ int main() {
 	//	add_to_head(&head, i, i + 1); // Добавление в голову с пустого списка начиная
 	//	//add_to_tail(&head, i, i + 1); // Добавление в хвост с пустого списка начиная
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
 	//printf("DEL\n");
 	//size_t i = 0;
-	//printf("head = %p\n", head);
+	//printf("\nhead = %p\n", head);
 	//while(head){
 	//	del_head(&head); // Удаление головы пока не пустой список
 	//	//del_tail(&head); // Удаление хвоста пока не пустой список
 	//	printf("%zu\n", i++);
-	//	print_list(&head);
-	//	printf("head = %p\n", head);
+	//	print_list(head);
+	//	printf("\nhead = %p\n", head);
 	//}
 
 
@@ -53,20 +53,20 @@ int main() {
 	//printf("ADD\n");
 
 	//add_before_el(&head, 0, 1, -1, -2); // Пустой список
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 
 	//printf("\n");
 	//for (int i = 0; i < 3; i++) { // Создание списка
 	//	add_to_tail(&head, i, i + 1);
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
 	//add_before_el(&head, 0, 1, -1, -2); // Перед головой
 	//add_before_el(&head, 0, 1, -3, -4); // Есть элемент в списке
 	//add_before_el(&head, 10, 11, -1, -2); // Нет элемента в списке
-	//print_list(&head);
+	//print_list(head);
 	
 
 	// After
@@ -74,20 +74,20 @@ int main() {
 	//printf("ADD\n");
 
 	////add_after_el(&head, 0, 1, -1, -2); // Пустой список
-	////print_list(&head);
+	////print_list(head);
 	////printf("\n");
 
 	//printf("\n");
 	//for (int i = 0; i < 3; i++) { // Создание списка
 	//	add_to_tail(&head, i, i + 1);
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
 	////add_after_el(&head, 1, 2, -1, -2); // Есть элемент в списке
 	////add_after_el(&head, 2, 3, -3, -4); // После хвоста
 	////add_after_el(&head, 10, 11, -1, -2); // Нет элемента в списке
-	////print_list(&head);
+	////print_list(head);
 
 
 	// To position
@@ -98,37 +98,37 @@ int main() {
 	//for (int i = 0; i < 3; i++) { // Создание списка с пустого и дальше за хвост
 	//	add_to_pos(&head, i, i, i + 1);
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
 	//add_to_pos(&head, 2, -3, -4); // В хвост
 	//add_to_pos(&head, 0, -1, -2); // В голову
 	//add_to_pos(&head, 2, -5, -6); // В середину
-	//print_list(&head);
+	//print_list(head);
 
 	//printf("DEL\n");
 	//size_t i = 0;
 	//del_at_pos(&head, 0); // Удаление головы
 	////del_at_pos(&head, 1); // Удаление в середине
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_at_pos(&head, 10); // Удаление за пределами списка
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_at_pos(&head, 1); // Удаление хвоста
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_at_pos(&head, 0); // Удаление единственного элемента в списке
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_at_pos(&head, 0); // Удаление в пустом списке
 	//printf("%zu\n", i++);
-	//print_list(&head);
-	//printf("head = %p\n", head);
+	//print_list(head);
+	//printf("\nhead = %p\n", head);
 
 
 	// Find element
@@ -139,7 +139,7 @@ int main() {
 	//for (int i = 0; i < 3; i++) { // Создание списка
 	//	add_to_pos(&head, i, i, i + 1);
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
 	//printf("Adress of point(1, 2) %p\n", find_el(head, 1, 2)); // Есть элемент
@@ -150,24 +150,24 @@ int main() {
 	//del_el(&head, 0, 1); // Удаление головы
 	////del_el(&head, 1, 2); // Удаление в середине
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_el(&head, 100, 200); // Удаление за пределами списка
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_el(&head, 2, 3); // Удаление хвоста
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_el(&head, 1, 2); // Удаление единственного элемента в списке
 	//printf("%zu\n", i++);
-	//print_list(&head);
+	//print_list(head);
 	//printf("\n");
 	//del_el(&head, 0, 1); // Удаление в пустом списке
 	//printf("%zu\n", i++);
-	//print_list(&head);
-	//printf("head = %p\n", head);
+	//print_list(head);
+	//printf("\nhead = %p\n", head);
 	
 
 	// Clear list
@@ -175,13 +175,13 @@ int main() {
 	//for (int i = 0; i < 3; i++) { // Создание списка
 	//	add_to_pos(&head, i, i, i + 1);
 	//	printf("%d\n", i);
-	//	print_list(&head);
+	//	print_list(head);
 	//	printf("\n");
 	//}
-	//printf("head = %p\n", head);
+	//printf("\nhead = %p\n", head);
 	//clear_list(&head);
-	//print_list(&head);
-	//printf("head = %p\n", head);
+	//print_list(head);
+	//printf("\nhead = %p\n", head);
 	return 0;
 }
 
@@ -417,11 +417,9 @@ void clear_list(struct point** list) {
 	}
 }
 
-void print_list(struct point** list) {
-	if (list && *list) {
-		struct point* current = *list;
-		for (size_t i = 0; current; current = current->next, i++) { // Вывод списка поэлементно с номером и через || адреса и указатели на соседей
-			printf("N = %2zu, x = %2d, y = %2d   ||   adress = %p, prev = %p, next = %p\n", i, current->x, current->y, current, current->prev, current->next);
-		}
+void print_list(struct point* list) {
+	struct point* current = list;
+	for (size_t i = 0; current; current = current->next, i++) { // Вывод списка поэлементно с номером и через || адреса и указатели на соседей
+		printf("N = %2zu, x = %2d, y = %2d   ||   adress = %p, prev = %p, next = %p\n", i, current->x, current->y, current, current->prev, current->next);
 	}
 }
