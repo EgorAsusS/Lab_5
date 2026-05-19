@@ -144,30 +144,6 @@ int main() {
 	//}
 	//printf("Adress of point(1, 2) %p\n", find_el(head, 1, 2)); // Есть элемент
 	//printf("Adress of point(100, 200) %p\n", find_el(head, 100, 200)); // Нет элемента
-
-	//printf("DEL\n");
-	//size_t i = 0;
-	//del_el(&head, 0, 1); // Удаление головы
-	////del_el(&head, 1, 2); // Удаление в середине
-	//printf("%zu\n", i++);
-	//print_list(head);
-	//printf("\n");
-	//del_el(&head, 100, 200); // Удаление за пределами списка
-	//printf("%zu\n", i++);
-	//print_list(head);
-	//printf("\n");
-	//del_el(&head, 2, 3); // Удаление хвоста
-	//printf("%zu\n", i++);
-	//print_list(head);
-	//printf("\n");
-	//del_el(&head, 1, 2); // Удаление единственного элемента в списке
-	//printf("%zu\n", i++);
-	//print_list(head);
-	//printf("\n");
-	//del_el(&head, 0, 1); // Удаление в пустом списке
-	//printf("%zu\n", i++);
-	//print_list(head);
-	//printf("\nhead = %p\n", head);
 	
 
 	// Clear list
@@ -412,8 +388,14 @@ void del_at_pos(struct point** list, size_t k) {
 }
 
 void clear_list(struct point** list) {
-	while (*list) {
-		del_head(list); // Удаление головы пока не пустой список
+	if (list) {
+		struct point* PtrIx = *list;
+		while (*list) {
+			PtrIx = *list; // Сохранение текущей головы
+			*list = (*list)->next; // Обновление головы
+			free(PtrIx); // Очищение памяти из старой головы
+			PtrIx = NULL;
+		}
 	}
 }
 
