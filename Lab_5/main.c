@@ -144,6 +144,31 @@ int main() {
 	//}
 	//printf("Adress of point(1, 2) %p\n", find_el(head, 1, 2)); // Есть элемент
 	//printf("Adress of point(100, 200) %p\n", find_el(head, 100, 200)); // Нет элемента
+
+	// Delete element by data
+	//printf("DEL\n");
+	//size_t i = 0;
+	//del_el(&head, 0, 1); // Удаление головы
+	////del_el(&head, 1, 2); // Удаление в середине
+	//printf("%zu\n", i++);
+	//print_list(head);
+	//printf("\n");
+	//del_el(&head, 100, 200); // Удаление за пределами списка
+	//printf("%zu\n", i++);
+	//print_list(head);
+	//printf("\n");
+	//del_el(&head, 2, 3); // Удаление хвоста
+	//printf("%zu\n", i++);
+	//print_list(head);
+	//printf("\n");
+	//del_el(&head, 1, 2); // Удаление единственного элемента в списке
+	//printf("%zu\n", i++);
+	//print_list(head);
+	//printf("\n");
+	//del_el(&head, 0, 1); // Удаление в пустом списке
+	//printf("%zu\n", i++);
+	//print_list(head);
+	//printf("\nhead = %p\n", head);
 	
 
 	// Clear list
